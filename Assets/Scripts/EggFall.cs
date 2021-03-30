@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
+using UnityEngine.UI;
 using Debug = UnityEngine.Debug;
 using Random = UnityEngine.Random;
 
@@ -11,7 +12,14 @@ public class EggFall : MonoBehaviour
     private int eggNumber;
     private GameObject egg;
     private GameObject parrentEgg;
-    private float delayTime;
+    public float delayTime;
+    private float timeHandler;
+    private Vector3 eggPos;
+    private int score;
+
+    public Collider2D bowl;
+    public Collider2D ground;
+    public Text text;
 
     private void ActiveEgg()
     {
@@ -25,25 +33,40 @@ public class EggFall : MonoBehaviour
                 egg = t.gameObject;
             }
         }
+
+        eggPos = egg.transform.position;
         
         if (egg)
         {
             egg.SetActive(true);
-            Debug.Log(eggName);
         }
         else
         {
-            Debug.Log("Nope:" + eggName);
+            //Debug.Log("Nope:" + eggName);
         }
+
+    }
+
+    private void EggLoop()
+    {
+        timeHandler -= Time.deltaTime;
+        if (timeHandler <= 0)
+        {
+            ActiveEgg();
+            timeHandler = delayTime;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        other.gameObject.SetActive(false);
+        other.gameObject.transform.position = eggPos;
+        score++;
+        text.text = score.ToString();
     }
 
     private void Update()
     {
-        delayTime -= Time.deltaTime;
-        if (delayTime <= 0)
-        {
-            ActiveEgg();
-            delayTime = 2;
-        }
+        EggLoop();
     }
 }
