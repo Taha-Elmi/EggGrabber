@@ -12,7 +12,7 @@ public class EggFall : MonoBehaviour
     private int eggNumber;
     private GameObject egg;
     private GameObject parrentEgg;
-    public float delayTime;
+    private float delayTime = 2;
     private float timeHandler;
     private Vector3 eggPos;
     private int score;
@@ -20,6 +20,7 @@ public class EggFall : MonoBehaviour
     public Collider2D bowl;
     public Collider2D ground;
     public Text text;
+    public Text state;
 
     private void ActiveEgg()
     {
@@ -54,6 +55,8 @@ public class EggFall : MonoBehaviour
         {
             ActiveEgg();
             timeHandler = delayTime;
+            delayTime = Mathf.Clamp(2 - (score * 0.01f), 1.1f, 2);
+            Debug.Log(delayTime.ToString());
         }
     }
 
@@ -67,6 +70,9 @@ public class EggFall : MonoBehaviour
 
     private void Update()
     {
-        EggLoop();
+        if (state.text.Equals("1"))
+        {
+            EggLoop();
+        }
     }
 }
