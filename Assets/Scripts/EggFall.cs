@@ -57,7 +57,15 @@ public class EggFall : MonoBehaviour
         {
             ActiveEgg();
             timeHandler = delayTime;
-            delayTime = Mathf.Clamp(2 - (score * 0.01f), 1.1f, 2);
+            if (state.text.Equals("1"))
+            {
+                delayTime = Mathf.Clamp(2 - (score * 0.01f), 1.1f, 2);
+            }
+            else
+            {
+                delayTime = Mathf.Clamp(1.85f - (score * 0.01f), 1f, 2);
+            }
+            
         }
     }
 
@@ -77,7 +85,7 @@ public class EggFall : MonoBehaviour
 
     private void Update()
     {
-        if (state.text.Equals("1"))
+        if (state.text.Equals("1") || state.text.Equals("2"))
         {
             EggLoop();
         }

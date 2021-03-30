@@ -32,8 +32,9 @@ public class GameOver : MonoBehaviour
         Time.timeScale = 0;
         
         other.gameObject.SetActive(false);
+        score.text = ": 0";
 
-        int intScore = int.Parse(score.text);
+        /*int intScore = int.Parse(score.text);
         int best;
         switch (state.text)
         {
@@ -62,7 +63,7 @@ public class GameOver : MonoBehaviour
                     BestHard.text = "Best: " + best;
                 }
                 break;
-        }
+        }*/
 
         GameUI.SetActive(false);
         MenuUI.SetActive(true);

@@ -2,12 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ChefController : MonoBehaviour
 {
     public float speed;
     public float fastRatio;
-    
+
     private void Update()
     {
         if (Input.GetKey(KeyCode.D) && transform.position.x < 8.5)
