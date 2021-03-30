@@ -22,6 +22,7 @@ public class EggFall : MonoBehaviour
     public Text text;
     public Text state;
     public GameObject PauseMenu;
+    
 
     private void ActiveEgg()
     {
@@ -57,7 +58,6 @@ public class EggFall : MonoBehaviour
             ActiveEgg();
             timeHandler = delayTime;
             delayTime = Mathf.Clamp(2 - (score * 0.01f), 1.1f, 2);
-            Debug.Log(delayTime.ToString());
         }
     }
 
