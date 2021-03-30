@@ -14,12 +14,12 @@ public class ChefController : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
             {
-                transform.Translate(speed * fastRatio, 0, 0);
+                transform.Translate(speed * fastRatio * Time.deltaTime, 0, 0);
 
             }
             else
             {
-                transform.Translate(speed, 0, 0);
+                transform.Translate(speed * Time.deltaTime, 0, 0);
 
             }
         }
@@ -28,11 +28,11 @@ public class ChefController : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
             {
-                transform.Translate(-speed * fastRatio, 0, 0);
+                transform.Translate(-speed * fastRatio * Time.deltaTime, 0, 0);
             }
             else
             {
-                transform.Translate(-speed, 0, 0);
+                transform.Translate(-speed * Time.deltaTime, 0, 0);
             }
         }
 

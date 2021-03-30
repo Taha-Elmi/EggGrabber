@@ -39,11 +39,11 @@ public class EggFall : MonoBehaviour
 
     private void Update()
     {
-        delayTime = 2;
-        ActiveEgg();
-        while (delayTime != 0)
+        delayTime -= Time.deltaTime;
+        if (delayTime <= 0)
         {
-            delayTime -= Time.deltaTime;
+            ActiveEgg();
+            delayTime = 2;
         }
     }
 }
