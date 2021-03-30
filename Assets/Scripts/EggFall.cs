@@ -21,6 +21,7 @@ public class EggFall : MonoBehaviour
     public Collider2D ground;
     public Text text;
     public Text state;
+    public GameObject PauseMenu;
 
     private void ActiveEgg()
     {
@@ -65,7 +66,13 @@ public class EggFall : MonoBehaviour
         other.gameObject.SetActive(false);
         other.gameObject.transform.position = eggPos;
         score++;
-        text.text = score.ToString();
+        text.text = ": " + score;
+    }
+
+    public void OnClick_Pause()
+    {
+        Time.timeScale = 0f;
+        PauseMenu.SetActive(true);
     }
 
     private void Update()
